@@ -271,11 +271,43 @@ iframe {
   border: none;
 }
 
-/* line 124, ../sass/_criscom.scss */
+/* line 118, ../sass/_criscom.scss */
+button.button {
+  background: #000000;
+  background: -webkit-gradient(linear, left top, left bottom, from(#5c3836), to(black));
+  background: -webkit-linear-gradient(top, #5c3836, black);
+  background: -moz-linear-gradient(top, #5c3836, black);
+  background: -ms-linear-gradient(top, #5c3836, black);
+  background: -o-linear-gradient(top, #5c3836, black);
+  padding: .5em .25em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: black 0 1px 0;
+  -moz-box-shadow: black 0 1px 0;
+  box-shadow: black 0 1px 0;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+  color: white;
+  font-size: 12px;
+  font-family: Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
+}
+/* line 139, ../sass/_criscom.scss */
+button.button span {
+  background: none;
+}
+
+/* line 144, ../sass/_criscom.scss */
+.button.button:hover, .button.button:active {
+  background: #5c3836;
+}
+
+/* line 158, ../sass/_criscom.scss */
 .col3-layout .col-wrapper {
   width: 697px;
 }
-/* line 126, ../sass/_criscom.scss */
+/* line 160, ../sass/_criscom.scss */
 .col3-layout .col-wrapper .col-main {
   margin-left: 0;
   width: 467px;
@@ -284,7 +316,7 @@ iframe {
   border-left: 2px dotted #5c3836;
   border-right: 2px dotted #5c3836;
 }
-/* line 134, ../sass/_criscom.scss */
+/* line 168, ../sass/_criscom.scss */
 .col3-layout .col-wrapper .col-left {
   width: 219px;
   border: none;
@@ -292,25 +324,41 @@ iframe {
   padding-left: 0;
 }
 
-/* line 143, ../sass/_criscom.scss */
+/* line 177, ../sass/_criscom.scss */
 .col-right {
   border: none;
 }
 
-/* line 151, ../sass/_criscom.scss */
+/* line 186, ../sass/_criscom.scss */
+.form-search label {
+  display: none;
+}
+/* line 189, ../sass/_criscom.scss */
+.form-search .input-text {
+  border: 1px solid #5c3836;
+  padding: .75em .25em;
+  width: 72%;
+  margin-right: -10px;
+}
+/* line 195, ../sass/_criscom.scss */
+.form-search .button.button {
+  float: right !important;
+}
+
+/* line 201, ../sass/_criscom.scss */
 .nav-container {
   margin-top: 2em;
 }
-/* line 156, ../sass/_criscom.scss */
+/* line 206, ../sass/_criscom.scss */
 .nav-container #nav {
   border: none;
 }
-/* line 158, ../sass/_criscom.scss */
+/* line 208, ../sass/_criscom.scss */
 .nav-container #nav li {
   float: none !important;
   clear: both;
 }
-/* line 161, ../sass/_criscom.scss */
+/* line 211, ../sass/_criscom.scss */
 .nav-container #nav li a {
   font-family: Oswald, Arial, Helvetica, "Nimbus Sans L", sans-serif;
   float: none;
@@ -322,95 +370,99 @@ iframe {
   text-transform: uppercase;
   font-weight: 300;
 }
-/* line 171, ../sass/_criscom.scss */
+/* line 221, ../sass/_criscom.scss */
 .nav-container #nav li a:hover {
   color: #eadbda !important;
   background: #5c3836;
 }
-/* line 179, ../sass/_criscom.scss */
+/* line 229, ../sass/_criscom.scss */
 .nav-container #nav li.nav-2 a {
   background: rgba(92, 56, 54, 0);
 }
-/* line 181, ../sass/_criscom.scss */
+/* line 231, ../sass/_criscom.scss */
 .nav-container #nav li.nav-2 a:hover {
   background: #5c3836;
 }
 
-/* line 191, ../sass/_criscom.scss */
+/* line 241, ../sass/_criscom.scss */
 .pager, .sorter {
   border: none;
   border-bottom: 2px #5c3836 dotted;
 }
 
-/* line 196, ../sass/_criscom.scss */
+/* line 246, ../sass/_criscom.scss */
 .pager {
   border-top: 2px #5c3836 dotted;
   padding-top: 1.25em;
 }
-/* line 199, ../sass/_criscom.scss */
+/* line 249, ../sass/_criscom.scss */
 .pager p.amount {
   font-family: Lato, Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 1em;
 }
 
-/* line 232, ../sass/_criscom.scss */
+/* line 282, ../sass/_criscom.scss */
 .block-cart, .block-viewed {
   border: none;
   margin-bottom: 1.25em;
 }
-/* line 235, ../sass/_criscom.scss */
+/* line 285, ../sass/_criscom.scss */
 .block-cart .block-title, .block-cart .block-content, .block-viewed .block-title, .block-viewed .block-content {
   border: none;
 }
-/* line 239, ../sass/_criscom.scss */
+/* line 289, ../sass/_criscom.scss */
 .block-cart .block-title span, .block-viewed .block-title span {
   font-weight: 300 !important;
 }
 
-/* line 246, ../sass/_criscom.scss */
+/* line 296, ../sass/_criscom.scss */
 .block-cart {
   border-bottom: 2px dotted #5c3836;
 }
-/* line 249, ../sass/_criscom.scss */
+/* line 299, ../sass/_criscom.scss */
 .block-cart .block-content .actions {
   margin-bottom: 1em;
 }
-/* line 252, ../sass/_criscom.scss */
+/* line 302, ../sass/_criscom.scss */
+.block-cart .block-content p.empty {
+  font-size: .75em;
+}
+/* line 305, ../sass/_criscom.scss */
 .block-cart .block-content .summary {
   font-size: .75em;
   margin-bottom: .5em;
 }
-/* line 255, ../sass/_criscom.scss */
+/* line 308, ../sass/_criscom.scss */
 .block-cart .block-content .summary p.amount {
   margin-bottom: .5em;
 }
-/* line 263, ../sass/_criscom.scss */
+/* line 316, ../sass/_criscom.scss */
 .block-cart .block-content .summary p.amount p.subtotal {
   margin-bottom: .5em;
   text-align: left;
 }
 
-/* line 272, ../sass/_criscom.scss */
+/* line 325, ../sass/_criscom.scss */
 #cart-sidebar li {
   font-size: .75em;
   padding-top: .75em;
 }
-/* line 275, ../sass/_criscom.scss */
+/* line 328, ../sass/_criscom.scss */
 #cart-sidebar li p.product-name {
   padding-bottom: .4em;
 }
-/* line 278, ../sass/_criscom.scss */
+/* line 331, ../sass/_criscom.scss */
 #cart-sidebar li div.truncated {
   padding-top: .4em;
 }
 
-/* line 289, ../sass/_criscom.scss */
+/* line 342, ../sass/_criscom.scss */
 .mini-products-list .product-image {
   border: none;
 }
 
-/* line 295, ../sass/_criscom.scss */
+/* line 348, ../sass/_criscom.scss */
 .block-viewed li a {
   font-family: Oswald, Arial, Helvetica, "Nimbus Sans L", sans-serif;
   float: none;
@@ -422,76 +474,76 @@ iframe {
   text-transform: uppercase;
   font-weight: 300;
 }
-/* line 305, ../sass/_criscom.scss */
+/* line 358, ../sass/_criscom.scss */
 .block-viewed li a:hover {
   color: #eadbda !important;
   background: #5c3836;
 }
 
-/* line 320, ../sass/_criscom.scss */
+/* line 373, ../sass/_criscom.scss */
 .col2-right-layout .col-main {
   border: none;
   border-right: 2px dotted #5c3836;
   width: 697px;
 }
 
-/* line 328, ../sass/_criscom.scss */
+/* line 381, ../sass/_criscom.scss */
 .product-view .product-img-box {
   width: 200px;
 }
-/* line 330, ../sass/_criscom.scss */
+/* line 383, ../sass/_criscom.scss */
 .product-view .product-img-box .product-image {
   border: none;
 }
 
-/* line 338, ../sass/_criscom.scss */
+/* line 391, ../sass/_criscom.scss */
 .breadcrumbs {
   border: none;
   border-bottom: 2px dotted #5c3836;
 }
-/* line 341, ../sass/_criscom.scss */
+/* line 394, ../sass/_criscom.scss */
 .breadcrumbs ul li {
   font-size: .75em;
 }
 
-/* line 356, ../sass/_criscom.scss */
+/* line 409, ../sass/_criscom.scss */
 .product-name h1 {
   color: #5c3836;
 }
 
-/* line 362, ../sass/_criscom.scss */
+/* line 415, ../sass/_criscom.scss */
 p.availability {
   font-size: .75em;
   margin-bottom: 1.5em;
 }
 
-/* line 368, ../sass/_criscom.scss */
+/* line 421, ../sass/_criscom.scss */
 .price-box {
   margin-bottom: .25em;
 }
 
-/* line 375, ../sass/_criscom.scss */
+/* line 428, ../sass/_criscom.scss */
 .tax-details {
   font-size: .75em;
 }
 
-/* line 380, ../sass/_criscom.scss */
+/* line 433, ../sass/_criscom.scss */
 .add-to-box .add-to-cart {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
 
-/* line 389, ../sass/_criscom.scss */
+/* line 442, ../sass/_criscom.scss */
 .short-description h2 {
   margin-bottom: .3em;
 }
-/* line 392, ../sass/_criscom.scss */
+/* line 445, ../sass/_criscom.scss */
 .short-description div.std {
   font-size: .75em;
   line-height: 1.25em;
 }
 
-/* line 399, ../sass/_criscom.scss */
+/* line 452, ../sass/_criscom.scss */
 p.zoom-notice {
   margin-top: .5em;
 }

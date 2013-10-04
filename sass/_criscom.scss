@@ -112,6 +112,40 @@ iframe {
   }
 }
 
+// Buttons
+// ======================================
+
+button.button {
+  // border-top: 1px solid #ffffff;
+  background: #000000;
+  background: -webkit-gradient(linear, left top, left bottom, from(#5c3836), to(#000000));
+  background: -webkit-linear-gradient(top, #5c3836, #000000);
+  background: -moz-linear-gradient(top, #5c3836, #000000);
+  background: -ms-linear-gradient(top, #5c3836, #000000);
+  background: -o-linear-gradient(top, #5c3836, #000000);
+  padding: .5em .25em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  box-shadow: rgba(0,0,0,1) 0 1px 0;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: white;
+  font-size: 12px;
+  font-family: Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
+  span {
+    background:none;
+  }
+}
+
+.button.button:hover, .button.button:active {
+  background: $brown;
+  // @extend %single-transition;
+}
+
 // Layout for frontpage
 // ======================================
 
@@ -146,6 +180,22 @@ iframe {
 
 // Left Sidebar
 // ======================================
+
+// Search
+.form-search {
+  label {
+    display: none;
+  }
+  .input-text {
+    border: 1px solid $brown;
+    padding: .75em .25em;
+    width: 72%;
+    margin-right: -10px;
+  }
+  .button.button { // Suche Button
+    float: right !important;
+  }
+}
 
 // links in left sidebar
 .nav-container {
@@ -248,6 +298,9 @@ h2.product-name {
   .block-content {
     .actions { // Zur Kassa Button
       margin-bottom: 1em;
+    }
+    p.empty { // If there are no items in the chart // Sie haben keine Artikel im Warenkorb
+      font-size: .75em;
     }
     .summary { // Es ist x Artikel im Warenkorb / Zwischensumme
       font-size: .75em;
