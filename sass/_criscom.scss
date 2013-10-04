@@ -1,0 +1,402 @@
+/**
+ * @file
+ *
+ * pilcrowstudio subtheme
+ * base theme: ZEN 5.3
+ * development server @localhost; 
+ * path: htdocs/pilcrow-studio.com
+ *
+ * author: criscom
+ * date: 20130813 / 13. August 2013
+ *
+**/ 
+
+* 
+{
+  @include bs;
+}
+
+body {
+  @include establish-baseline;
+  //@include adjust-font-size-to(16px);
+  background:$brown image-url('kessel-bg.jpg') top center no-repeat;
+  background:$brown url('http://localhost/herzogdestillate/images/kessel-bg.jpg') top center no-repeat;
+  font-family: $base-font-family;
+  }
+
+::-moz-selection {
+  background-color: black;
+  text-shadow: none;
+}
+
+::selection {
+  background-color: black;
+  text-shadow: none;
+}
+
+input, select, img {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+// transparent gradient for main container
+.page {
+  @extend %page-gradient;
+}
+
+// positioning logo
+.header {
+  border: none;
+  @extend %rl-border;
+  h1.logo {
+    padding-top: 1.35em;
+  }
+}
+
+// Horizontal main menu
+// ======================================
+.top-container {
+  clear: none !important;
+  margin-top: 2.2em;
+  .widget {
+    display: block;
+    padding: .5em 0;
+      li {
+      display: inline;
+      a {
+        font-family: $oswald;
+        color: white;
+        text-transform: uppercase;
+        background-color: $brown;
+        padding: .55em;
+        margin-right: .25em;
+        text-decoration: none;
+        font-size: 1em;
+        text-transform: uppercase;
+        font-weight: 300;
+        &:hover {
+          background-color: transparentize($brown, .5);
+          @extend %single-transition;
+        }
+      }
+      &.last a {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+// quick access "Mein Benutzerkonto" etc
+.header .quick-access {
+  margin-top: .75em;
+    ul li {
+      font-size: .75em;
+      a {
+      @extend %link;
+      &:hover {
+        @extend %hover;
+        }
+      }
+    }
+}
+
+// Online Shop von Siegfried Herzog
+.page-title {
+  border: none;
+  h1 {
+    @extend %lato-header;
+  }
+}
+
+// Layout for frontpage
+// ======================================
+
+// setting margins for the main content container
+.main-container {
+  @extend %rl-border;
+}
+// Adjusting the layout for the frontpage 3column layout
+.col3-layout {
+  .col-wrapper {
+    width: 697px; // wrapper for main (product) content and left sidebar (right-sidebar's width: 230px;)
+    .col-main {
+    margin-left: 0;
+    width: 467px; // products
+    padding: 0 11px;
+    border-top: none !important;
+    border-left: 2px dotted $brown;
+    border-right: 2px dotted $brown;
+    }
+    .col-left {
+      width: 219px; // menu
+      border: none;
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+.col-right {
+  border: none;
+}
+
+// Left Sidebar
+// ======================================
+
+// links in left sidebar
+.nav-container {
+  margin-top: 2em;
+    h3 {
+      @extend %lato-header;
+    }
+    #nav {
+    border: none;
+    li {
+      float: none !important;
+      clear: both;
+      a {
+        font-family: $oswald;
+        float: none;
+        display: block;
+        background:transparentize($brown, .5);
+        padding: .6em;
+        color: darken($brown, 30%);
+        font-size: 1.5em;
+        text-transform: uppercase;
+        font-weight: 300;
+        &:hover {
+          color: lighten($brown, 60%) !important;
+          background:$brown;
+          @extend %single-transition;
+        }
+      }
+    }
+    li.nav-2 {
+      a {
+      background:transparentize($brown, 1);
+      &:hover {
+        background:$brown;
+      }
+      }
+    }
+  }
+}
+
+// Sorter and pager on homepage above products
+// ======================================
+.pager, .sorter {
+  border: none;
+  border-bottom: 2px $brown dotted;
+}
+
+.pager {
+  border-top: 2px $brown dotted;
+  padding-top: 1.25em;
+  p.amount {
+    font-family: $lato;
+    font-weight: 400;
+    font-size: 1em;
+  }
+  .limiter {
+    @extend %lato-text;
+  }
+}
+
+.sort-by {
+  @extend %lato-text;
+}
+
+// Products on frontpage
+// ======================================
+h2.product-name {
+  @extend %lato-product;
+  a {
+    @extend %link;
+    &:hover {
+      @extend %hover;
+    }
+  }
+}
+
+// ======================================
+// Right Sidebar: Warenkorb / zuletzt angesehene Artikel
+// ======================================
+
+// Warenkorb
+// ======================================
+
+.block-cart, .block-viewed { // .block-carte = Warenkorb; .block-viewed = zuletzt angesehene Artikel
+  border: none;
+  margin-bottom: 1.25em;
+  .block-title, .block-content {
+    border: none;
+  }
+  .block-title {
+    span {
+      @extend %lato-header;
+      font-weight: 300!important;
+    }
+  }
+}
+
+.block-cart {
+  border-bottom: 2px dotted $brown;
+  .block-content {
+    .actions { // Zur Kassa Button
+      margin-bottom: 1em;
+    }
+    .summary { // Es ist x Artikel im Warenkorb / Zwischensumme
+      font-size: .75em;
+      margin-bottom: .5em;
+      p.amount {
+        margin-bottom: .5em;
+        a {
+          @extend %link;
+          &:hover {
+            @extend %hover;
+          }
+        }
+      p.subtotal {
+        margin-bottom: .5em;
+        text-align: left;
+      }
+      }
+    }
+  }
+}
+// Kürzlich hinzugefügte Artikel
+#cart-sidebar li {
+  font-size: .75em;
+  padding-top: .75em;
+  p.product-name {
+    padding-bottom: .4em;
+  }
+  div.truncated { // Details
+    padding-top: .4em;
+  }
+  a {
+    @extend %link;
+    &:hover {
+      @extend %hover;
+    }
+  }
+}
+
+.mini-products-list .product-image {
+  border: none;
+}
+
+// Zuletzt angesehene Artikel (siehe auch oben Warenkorb)
+// ======================================
+.block-viewed li a {
+  font-family: $oswald;
+  float: none;
+  display: block;
+  background:transparentize($brown, .5);
+  padding: .6em;
+  color: darken($brown, 30%);
+  font-size: 1.25em;
+  text-transform: uppercase;
+  font-weight: 300;
+    &:hover {
+      color: lighten($brown, 60%) !important;
+      background:$brown;
+      @extend %single-transition;
+    }
+}
+
+// ======================================
+// Product page
+// ======================================
+
+// Adjusting the width for the main column on the product page
+// ======================================
+
+// Main column
+.col2-right-layout .col-main {
+  border: none;
+  // border-left: 2px dotted $brown;
+  border-right: 2px dotted $brown;
+  width: 697px;
+}
+
+// Product image width adjustment
+.product-view .product-img-box {
+  width: 200px;
+  .product-image {
+  border: none;
+  }
+}
+
+// Breadcrumb on product page
+// ======================================
+
+.breadcrumbs {
+  border: none;
+  border-bottom: 2px dotted $brown;
+  ul li {
+    font-size: .75em;
+    a {
+      @extend %link;
+      &:hover {
+        @extend %hover;
+      }
+    }
+  }
+}
+
+// Item stylings for product page
+// ======================================
+
+// Product name
+.product-name h1 {
+  @extend %lato-product;
+  color: $brown;
+}
+
+// Verfügbarkeit - auf Lager
+p.availability {
+  font-size: .75em;
+  margin-bottom: 1.5em;
+}
+
+// Price
+.price-box {
+  margin-bottom: .25em;
+  #product-price-2 {
+  }
+}
+
+// tax
+.tax-details {
+  font-size: .75em;
+}
+
+// In den Warenkorb
+.add-to-box .add-to-cart {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  label, .input-text {
+  }
+}
+
+// Kurzbeschreibung
+.short-description {
+  h2 {
+    margin-bottom: .3em;
+  }
+  div.std {
+  font-size: .75em;
+  line-height: 1.25em;
+  }
+}
+
+// Klicken Sie hier doppelt - Text unter dem Produktbild
+p.zoom-notice {
+  @extend %lato-text;
+  margin-top: .5em;
+}
