@@ -98,6 +98,12 @@ $font-monospace:   $courier;
 
 $gray: #cccccc; // gray for page background
 $brown: #5c3836; // background for horizontal main menu links
+$red: #b81c14; // for alert warnings
+$greenbg: #325437; // for conrirmation notices backgrounds 
+// $greentxt: #325437; #4b5833; for confirmation noticestext
+$brownmsg: #9c5f5c; // background for notice-msg
+
+$basesize: .9em; // used as a base font size for normal text parts such as descriptions and the quick access links
 
 // Media Queries variables
 //

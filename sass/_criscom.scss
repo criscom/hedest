@@ -16,38 +16,118 @@
   @include bs;
 }
 
+html {
+  height: 100% !important;
+}
+
 body {
   @include establish-baseline;
-  //@include adjust-font-size-to(16px);
-  background:$brown image-url('kessel-bg.jpg') top center no-repeat;
-  background:$brown url('http://localhost/herzogdestillate/images/kessel-bg.jpg') top center no-repeat;
+  //@include adjust-font-size-to(12px);
+  background: #000 image-url('bg_kessel.jpg') center top no-repeat fixed;
+  //background:$brown url('http://localhost/herzogdestillate/images/kessel-bg.jpg') top center no-repeat;
   font-family: $base-font-family;
+  height: 100%;
   }
 
+body.checkout-cart-index {
+  background:#000 image-url('bg_brennerei.jpg') top center no-repeat fixed;
+}
+
+body.catalog-product-view {
+  background: #000 image-url('bg_jause.jpg') top center no-repeat fixed;
+}
+
+body.checkout-onepage-index {
+  background: #000 image-url('bg_brennerei_aussen.jpg') top center no-repeat fixed;
+}
+
 ::-moz-selection {
-  background-color: black;
+  background-color: $brown;
   text-shadow: none;
 }
 
 ::selection {
-  background-color: black;
+  background-color: $brown;
   text-shadow: none;
 }
 
-input, select, img {
+input, select {
   max-width: 100%;
   height: auto;
 }
+
+ li.item img {
+   max-width: 100%;
+   height: auto;
+ }
 
 iframe {
   max-width: 100%;
 }
 
 // transparent gradient for main container
-.page {
+.page
+{
   @extend %page-gradient;
 }
 
+
+// Allgemene Geschäftsbedingungen
+body.page-popup div {
+  padding: 1em;
+  @extend %page-gradient;
+  h2 {
+    font-family: $lato;
+    margin-top: 1em;
+    margin-bottom: .5em;
+  }
+}
+
+// Impressum
+// AGB
+body.cms-impressum, body.cms-agb {
+  h1 {
+    margin-bottom: .5em;
+    @extend %lato-header;
+  }
+  h2 {
+    margin-bottom: .4em;
+    @extend %lato-header;
+    font-size: 1.4em;
+  }
+  h3 {
+    margin-bottom: .4em;
+    @extend %lato-header;
+    font-size: 1.25em;
+
+  }
+}
+
+// Basis font declaration
+p {
+  font-size: $basesize;
+  line-height: 1.5em;
+  a {
+    color: $brown;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+}
+
+
+.block-account a, .actions a, .box-head a, .box a,
+li a {
+  color: $brown;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.block li.even {
+  background-color: transparent;
+}
 // positioning logo
 .header {
   border: none;
@@ -56,6 +136,14 @@ iframe {
     padding-top: 1.35em;
   }
 }
+
+// Drucken Icon ausblenden
+
+.link-print {
+  background:none;
+  padding: 0;
+}
+
 
 // Horizontal main menu
 // ======================================
@@ -94,7 +182,8 @@ iframe {
 .header .quick-access {
   margin-top: .75em;
     ul li {
-      font-size: .75em;
+      font-size: $basesize;
+      padding-left: .25em;
       a {
       @extend %link;
       &:hover {
@@ -162,8 +251,9 @@ button.button {
     width: 467px; // products
     padding: 0 11px;
     border-top: none !important;
-    border-left: 2px dotted $brown;
-    border-right: 2px dotted $brown;
+    border-bottom: none !important;
+    border-left: 2px dotted $brown !important;
+    border-right: 2px dotted $brown !important;
     }
     .col-left {
       width: 219px; // menu
@@ -173,9 +263,24 @@ button.button {
     }
   }
 }
+// Benutzerkonto
+.col2-left-layout {
+  .col-main {
+  width: 697px;
+  }
+  .col-left {
+    border: none;
+    border-right: 2px dotted $brown;
+    padding: 5px 9px 0 0;
+  }
+}
 
 .col-right {
-  border: none;
+  padding: 0;
+}
+
+.col-main, .col-right, .buttons-set { // hide the borders everywhere //  table, colgroup, thead, tr, th, td 
+  border: none !important;
 }
 
 // Left Sidebar
@@ -188,7 +293,7 @@ button.button {
   }
   .input-text {
     border: 1px solid $brown;
-    padding: .75em .25em;
+    padding: .725em .25em;
     width: 72%;
     margin-right: -10px;
   }
@@ -200,37 +305,107 @@ button.button {
 // links in left sidebar
 .nav-container {
   margin-top: 2em;
-    h3 {
+    h3, h2 {
       @extend %lato-header;
     }
-    #nav {
+    #nav, #subnavlist {
     border: none;
-    li {
-      float: none !important;
-      clear: both;
-      a {
-        font-family: $oswald;
-        float: none;
-        display: block;
-        background:transparentize($brown, .5);
-        padding: .6em;
-        color: darken($brown, 30%);
-        font-size: 1.5em;
-        text-transform: uppercase;
-        font-weight: 300;
+      li {
+        float: none !important;
+        clear: both;
+        a {
+          font-family: $oswald;
+          float: none;
+          display: block;
+          background:transparentize($brown, .5);
+          padding: .6em;
+          color: darken($brown, 30%);
+          font-size: 1.5em;
+          text-transform: uppercase;
+          font-weight: 300;
+          &:hover {
+            color: lighten($brown, 60%) !important;
+            background:$brown;
+            @extend %single-transition;
+          }
+        }
+      }
+      li.active a {
+        background:$brown;
+        color: white;
+      }
+      li.nav-2 {
+        a {
+        background:transparentize($brown, 1);
         &:hover {
-          color: lighten($brown, 60%) !important;
           background:$brown;
-          @extend %single-transition;
         }
       }
     }
-    li.nav-2 {
-      a {
-      background:transparentize($brown, 1);
+  }
+#subnavlist {
+  margin-top: .9em;
+  li a {
+    font-size: 1.3333333em;
+    text-decoration: none;
+    line-height: 1.5em;
+    }
+  >li:nth-child(even) a {
+      background: transparentize($brown,1);
       &:hover {
-        background:$brown;
+        background: $brown;
       }
+    }
+  li.subnav_act a{
+      background:$brown;
+      color: white;
+    }
+  }
+}
+
+#subnavlist>ul {
+  li {
+    a {
+      font-size: 1em !important;
+      padding-left: 1.5em !important;
+      background: none !important;
+      &:hover {
+        background: $brown !important;
+      }
+    }
+  &.subnav_small_act a {
+    background: transparentize($brown, .25) !important;
+    color: white;
+  }
+  }
+}
+
+
+// Versandkosteninfo Left Sidebar
+
+.col-left .widget-static-block {
+  margin-top: 2em !important;
+  border: 1px solid $brown;
+  background: transparentize($brown, .8) !important;
+  .block-title {
+    font-family: $oswald;
+    border-bottom-color: $brown !important;
+    background: transparentize($brown, .5) !important;
+    padding: .5em;
+
+  }
+  p {
+    font-size: .75em;
+    line-height: 1.5em;
+    padding: .5em;
+  }
+  dt.complete, dd.complete {
+    
+    padding: .5em;
+    a {
+      color: $brown;
+      &:hover {
+        text-decoration: none;
       }
     }
   }
@@ -241,18 +416,41 @@ button.button {
 .pager, .sorter {
   border: none;
   border-bottom: 2px $brown dotted;
+  .limiter {
+    @extend %lato-text;
+    float: left;
+    font-size: $basesize;
+    padding-bottom: .25em;
+  }
+  .pages {
+    clear: both;
+    margin-top: .25em;
+    font-family: $lato;
+    font-size: $basesize;
+    font-weight: 300;
+    strong {
+      float: left;
+      margin-right: .25em;
+    }
+    li {
+      display: inline;
+      a {
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 
 .pager {
-  border-top: 2px $brown dotted;
+  //border-top: 2px $brown dotted;
   padding-top: 1.25em;
   p.amount {
     font-family: $lato;
     font-weight: 400;
     font-size: 1em;
-  }
-  .limiter {
-    @extend %lato-text;
   }
 }
 
@@ -262,6 +460,13 @@ button.button {
 
 // Products on frontpage
 // ======================================
+
+.products-list li.item {
+  padding-top: 2em;
+  padding-left: 0;
+  border-bottom: 2px dotted $brown;
+}
+
 h2.product-name {
   @extend %lato-product;
   a {
@@ -270,6 +475,47 @@ h2.product-name {
       @extend %hover;
     }
   }
+}
+
+.shipping-cost-details {
+  a {
+    @extend %link;
+    text-decoration: underline !important;
+    &:hover {
+      @extend %hover;
+      text-decoration: none !important;
+    }
+  }
+}
+
+div.f-fix {
+  min-height: 300px;
+  height: auto !important;
+  height: 300px;
+  .desc {
+    font-size: $basesize;
+    a.link-learn {
+        @extend %link;
+        text-decoration: underline !important;
+        &:hover {
+          @extend %hover;
+          text-decoration: none !important;
+        }
+      }
+    }
+  .tax-details {
+    line-height: 2em;
+    }
+  p { // Button padding
+    margin-top: .5em;
+    margin-bottom: .5em;
+  }
+}
+
+// remove numbers in front of the lists
+.std ol {
+  list-style: none;
+  padding-left: 0;
 }
 
 // ======================================
@@ -300,10 +546,17 @@ h2.product-name {
       margin-bottom: 1em;
     }
     p.empty { // If there are no items in the chart // Sie haben keine Artikel im Warenkorb
-      font-size: .75em;
+      font-size: $basesize;
     }
+    p.block-subtitle { // Kürzlich hinzugefügte Artikel
+      border-top: 2px $brown dotted;
+      padding-top: 1em;
+      @extend %lato-header;
+      font-weight: 300!important;
+      line-height: 1.25em!important;
+      font-size: 1.25em;
+  }
     .summary { // Es ist x Artikel im Warenkorb / Zwischensumme
-      font-size: .75em;
       margin-bottom: .5em;
       p.amount {
         margin-bottom: .5em;
@@ -313,17 +566,26 @@ h2.product-name {
             @extend %hover;
           }
         }
-      p.subtotal {
-        margin-bottom: .5em;
-        text-align: left;
-      }
       }
     }
   }
 }
+
+
+.block-viewed .block-title span { // Zuletzt angesehene Artikel
+  font-size: 1.4em;
+  line-height: 1.25em;
+}
+
+// Zwischensumme
+ p.subtotal {
+  margin-bottom: .5em;
+  text-align: left !important;
+  }
+
 // Kürzlich hinzugefügte Artikel
 #cart-sidebar li {
-  font-size: .75em;
+  font-size: $basesize;
   padding-top: .75em;
   p.product-name {
     padding-bottom: .4em;
@@ -361,6 +623,105 @@ h2.product-name {
       @extend %single-transition;
     }
 }
+
+// ======================================
+// Footer Shop
+// ======================================
+
+.footer {
+  border: none;
+  @extend %rl-border;
+  ul {
+    border-top: 2px dotted $brown;
+    padding-top: .5em;
+    li {
+      font-family: $lato;
+      padding-right: .5em;
+      font-weight: 300;
+      font-size: $basesize;
+      text-transform: uppercase;
+      letter-spacing: -0.1em;
+      &:after {
+        padding-left: .5em;
+        content: "|";
+      }
+      &.last:after {
+        content: "";
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+          @extend %hover;
+        }
+      }
+    }
+  }
+  ul.links {
+    border-top: none
+  }
+}
+
+// Footer TYPO3
+// ======================================
+
+#imprint {
+  margin: 0 2em;
+  border-top: 2px dotted $brown;
+  padding-top: .5em;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  a {
+    font-family: $lato;
+    padding-right: .5em;
+    padding-left: .5em;
+    font-weight: 300;
+    font-size: $basesize;
+    text-transform: uppercase;
+    letter-spacing: -0.1em;
+    text-decoration: none;
+    color: black;
+    &:hover {
+      @extend %hover;
+    }
+  }
+}
+
+// Sticky Footer
+// ======================================
+
+//  body.checkout-cart-index .wrapper,  
+//  body.checkout-cart-index .page,
+//  body.customer-account-login .wrapper,  
+//  body.customer-account-login .page,  
+//   {
+//   min-height: 100%;
+//   height: 100%;
+// }
+
+// body.checkout-cart-index .page-wrapper,
+// body.customer-account-login .page-wrapper
+//   {
+//   min-height: 100%;I
+//   height: 100%;
+// }
+
+//  body.checkout-cart-index .main-container,
+//  body.customer-account-login .main-container
+//   {
+//   overflow: auto;
+//   padding-bottom: 57px;
+// }
+
+//  body.checkout-cart-index .footer-container,
+//  body.customer-account-login .footer-container 
+//  {
+//   position: relative;
+//   margin-top: -57px;
+//   height: 57px;
+//   clear: both;
+// }
+
 
 // ======================================
 // Product page
@@ -402,6 +763,25 @@ h2.product-name {
   }
 }
 
+// Toolbar mit Pager
+// ======================================
+
+.toolbar {
+  .pager {
+    padding-top: 0;
+    .amount {
+      float: right;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      font-size: .75em;
+    }
+    .limiter {
+      float: none;
+      padding-bottom: .35em;
+    }
+  }
+}
+
 // Item stylings for product page
 // ======================================
 
@@ -411,10 +791,26 @@ h2.product-name {
   color: $brown;
 }
 
+// Subtitle
+div.subtitle h3 {
+  margin-bottom: .5em;
+}
+
+// Füllmenge
+// Alkohol
+.fill-quantity, .alcohol {
+  font-size: $basesize;
+}
+
+.alcohol {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
 // Verfügbarkeit - auf Lager
 p.availability {
-  font-size: .75em;
-  margin-bottom: 1.5em;
+  font-size: $basesize;
+  margin-bottom: 1.5em;  
 }
 
 // Price
@@ -443,7 +839,7 @@ p.availability {
     margin-bottom: .3em;
   }
   div.std {
-  font-size: .75em;
+  font-size: $basesize;
   line-height: 1.25em;
   }
 }
@@ -452,4 +848,520 @@ p.availability {
 p.zoom-notice {
   @extend %lato-text;
   margin-top: .5em;
+}
+
+// Zoom Grafik/Funktion ausblenden
+.zoom {
+  display: none;
+}
+
+// ======================================
+// WARENKORB checkout
+// ======================================
+
+.main-container.col1-layout, .main-container.col2-layout, 
+.main-container.col2-right-layout, .main-container.col2-left-layout {
+  @extend %margin-top;
+}
+
+.data-table {
+  thead {
+    background:transparentize($brown, .5);
+    color: darken($brown, 30%);
+  }
+  th, td { // table border
+    border-color: $brown;
+  }
+  tr.even { // every second item in the cart will have the same bg as the thead
+    background:transparentize($brown, .5);
+  }
+}
+
+.item-options {
+  dt { // Short description header 
+    display: none;
+  }
+  .truncated { // Short description text
+    font-size: $basesize;
+    padding-left: 0;
+    a {
+      color: $brown;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+.a-center { // Bearbeiten
+  font-size: $basesize;
+  a {
+    @extend %link;
+    &:hover {
+      @extend %hover;
+    }
+  }
+}
+
+tr.summary-details-1 td { // tax field when the plus icon is clicked
+  background:transparentize($brown, .5) !important;
+  color: black;
+}
+
+#discount-coupon-form, .shipping { // Rabattcodes, // Versandkosten
+  h2 { 
+    margin-top: .3em;
+    margin-bottom: .1em;
+  }
+  label {
+    font-size: .75em;
+  }
+  .buttons-set {
+    padding: 5px 0 15px 0;
+    button.button {
+    float: left;
+    }
+  }
+  a {
+    @extend %link;
+    &:hover {
+      @extend %hover;
+    }
+  }
+}
+
+.cart-empty p {
+  a {
+    color: $brown;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+// Messages, notices, Nachrichten
+ul.messages {
+  li.success-msg {
+    background:$greenbg;
+    color:white;
+    margin-left: -2.5em;
+  }
+  li.notice-msg {
+    background: $brownmsg !important;
+    color: white !important;
+    margin-left: -2.5em !important;
+    border-color: transparent;
+  }
+  li.error-msg {
+    color: $red;
+    margin-left: -2.5em !important;
+    border-color: transparent;
+  }
+}
+
+#advice-required-entry-pass {
+  color: $red;
+}
+
+// ======================================
+// Anmelden oder Benutzerkonto erstellen
+// ======================================
+
+.account-login {
+  .page-title {
+    margin-bottom: 2.5em;
+  }
+}
+
+#login-form {
+  .new-users {
+    .buttons-set {
+      padding-left: 0;
+    }
+      button.button {
+        float: left;
+      }
+  }
+}
+
+.new-users, .registered-users {
+  h2 {
+    font-family: $oswald;
+    font-size: 1.5em;
+    margin-bottom: .5em;
+  }
+  p {
+    font-size: .75em;
+    line-height: 1.5em;
+  }
+  ul.form-list {
+    margin-top: 1em;
+  }
+}
+p.required, label em {
+  color: $red !important;
+}
+
+.buttons-set {
+  a {
+    @extend %link;
+    font-size: .75em;
+    &:hover {
+      @extend %hover;
+    }
+  }
+}
+
+// ======================================
+// ZUR KASSE - One page checkout
+// ======================================
+
+.opc {
+  border-bottom: {
+    color: $brown;
+  }
+  .step {
+    border-top: {
+      color: $brown;
+    }
+  }
+  .section {
+    border-color: $brown !important;
+    .step-title {
+      font-family: $oswald;
+      padding: .5em 0;
+      background:transparentize($brown, .5) !important;
+      .number { // Number in front of the checkout steps
+      line-height: none;
+      padding-left: .5em;
+      color: white;
+      }
+      h2 {
+        color: white;
+      }
+    }
+  }
+}
+
+.opc .active .step-title { // active step
+  background:transparentize($brown, .25) !important;
+}
+
+// Auf Rechnung
+.form-list input.input-text {
+  width: 90%;
+}
+
+// Die Rechnung ist innerhalb 10 Tagen zahlbar.
+.sp-methods .form-list {
+  padding-left: 0 !important;
+}
+
+.step {
+  p {
+    margin-bottom: .5em;
+  }
+  h3, h4 {
+  line-height: 1.1em;
+  margin-bottom: .5em;
+  }
+  h3 {
+    font-family: $lato;
+    font-size: 1.25em;
+  }
+  li {
+    padding: .25em 0;
+    line-height: 1.05em;
+  }
+  .form-list label {
+    margin: .3em 0;
+  }
+}
+
+#login-form li label {
+  font-size: $basesize;
+}
+
+#checkout-review-table {
+  tr.odd, tfoot tr {
+  background-color: transparent !important;
+  background: none !important;
+  }
+  tr.even {
+    background-color: transparentize($brown, .5) !important;
+  }
+}
+
+#checkout-review-submit {
+  background-color: transparent !important;
+  border-width: 0 3px 3px !important; 
+  .buttons-set {
+  margin-top: 0;
+  background-color: transparent !important;
+  border-width: 0 3px 3px !important; 
+  }
+}
+
+p.agree a {
+  color: $brown;
+  &:hover {
+    text-decoration:none;
+  }
+}
+
+span.cart-price .price {
+  font-size: $basesize;
+}
+
+// Bestellstatus // Mein Benutzerkonto // Artikel vergleichen // Meine Bestellungen
+
+.block-progress, .block-account, .block-compare, .block-reorder {
+  border-color: $brown;
+  .block-title {
+    font-family: $oswald;
+    border-bottom-color: $brown !important;
+    background: transparentize($brown, .5) !important;
+
+  }
+  .block-content {
+    font-size: .75em;
+    line-height: 1.5em;
+  }
+  dt.complete, dd.complete {
+    background: transparentize($brown, .8) !important;
+    padding: .5em;
+    a {
+      color: $brown;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// Bestellbestätigung // Letzte Bestellungen
+body.checkout-onepage-success h2.sub-title, .box-head h2 {
+  font-family: $oswald;
+  margin-bottom: .5em;
+}
+
+// Form input text fields
+input.input-text, select, textarea {
+  border: 1px solid $brown;
+}
+
+// ======================================
+// Benutzerkonto - 2 columns
+// ======================================
+
+.title-buttons { // Nachbestellen / Bestellung drucken
+  .separator {
+    display: none;
+  }
+  a {
+    font-size: .75em;
+    color: $brown;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.my-account .order-info { // Über diese Bestellung: Bestellinformationen
+  border: none;
+  padding-left: 0;
+  font-size: $basesize;
+}
+
+#my-orders-table {
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+}
+
+.box-title, .addresses-list {
+  h2, h3 {
+  font-family: $lato;
+  font-size: 1em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  }
+  a {
+    font-size: .75em;
+  }
+}
+
+.box-content, .addresses-list {
+    h4 {
+    margin-top: .5em;
+    margin-bottom: .2em;
+  }
+    address {
+    font-size: $basesize;
+    line-height: 1.5em;
+  }
+}
+
+.block-compare .block-content p {
+  font-size: 1em;
+}
+
+.fieldset {
+  background:transparent;
+  border-color: $brown;
+  .legend {
+    background: transparentize($brown, .5);
+    padding: .5em;
+    border: 1px solid $brown;
+    margin: -40px 0 0  0;
+  }
+}
+
+#my-orders-table {
+  th, tbody {
+    font-size: .75em;
+    a {
+    font-size: 1.25em !important;
+    }
+  }
+ 
+}
+
+// BESTELLUNG - Verarbeitung
+
+.order-details {
+  h2 {
+    font-family: $lato;
+    margin: 1em 0 .75em;
+    font-size: 1.2em;
+    a {
+      font-size: .75em;
+      color: $brown;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  h3 {
+    font-family: $lato;
+    margin-bottom: .75em;
+
+  }
+}
+
+.order-info-box .box-content { // Versandart ==> Versandkosten
+  font-size: $basesize;
+}
+
+.a-right { // Zwischensumme, Versand & Bearbeitung, Steuer, Gesamtsumme
+  font-size: $basesize;
+}
+
+// Meine Übersicht
+
+.nobr a {
+  font-size: 1em !important;
+}
+
+// Sitemap
+.page-sitemap {
+  .pager  {
+    border-top: none;
+  }
+}
+
+// SUCHERGEBNISSE - FILTER NACH linke Sidebar
+// ======================================
+
+.col-left .block-layered-nav {
+  margin-top: 2em !important;
+  border: 1px solid $brown;
+  background: transparentize($brown, .8) !important;
+  .block-title {
+    font-family: $oswald;
+    border-bottom-color: $brown !important;
+    background: transparentize($brown, .5) !important;
+    padding: .5em;
+    font-weight: 300;
+  }
+}
+
+.block .block-subtitle, .block #narrow-by-list dt, .block #narrow-by-list dd {
+  font-weight: normal;
+  margin-bottom: .25em;
+}
+
+.block #narrow-by-list dt, .block #narrow-by-list dd {
+  font-size: .9em;
+}
+
+// TYPO3 Seite
+// ======================================
+  .csc-default  {
+    // min-height: 650px;
+    h1, h2 {
+      @extend %lato-header;
+      margin: 0 0 .75em 0;
+    }
+
+    h2 {
+      font-size: 1.25em;
+       margin: .75em 0;
+    }
+    h3 {
+      margin: .75em 0;
+      font-family: $lato;
+    }
+    li {
+      font-size: .9em;
+      font-family: $helvetica;
+      padding: .5em 0;
+    }
+  }
+
+#c3.csc-default // Die Brennerei
+  {
+    min-height: 500px;
+  }
+
+.img img {
+  margin-bottom: .5em;
+}
+
+li a img, // SHOP Übersicht
+.product-image img, // SHOP Detail
+.img img, // TYPO3
+.csc-textpic-image img // TYPO3 inline images
+{
+  // border: 1px solid $brown;
+  -moz-box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.75);
+}
+
+  // TYPO3 Sitemap
+  // ======================================
+
+.csc-sitemap {
+    ul {
+        padding-left: 1.25em;
+
+       li {
+        list-style: disc;
+        color: $brown;
+        a {
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+      ul {
+        padding-left: .75em;
+        font-size: .9em;
+      }
+    }
+  }
+.csc-sitemap>ul>li {
+  font-size: 1.25em;
 }
